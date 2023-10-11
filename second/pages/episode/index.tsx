@@ -1,4 +1,5 @@
 import axios from "axios";
+import Link from "next/link";
 
 interface MovieIndexProps {
   movieList: {
@@ -23,7 +24,9 @@ const MovieIndex = ({ movieList }: MovieIndexProps) => {
           return (
             <div key={item.id} className="flex gap-2 items-center">
               <p className="pb-2 border-b border-slate-300 w-full pt-3">
-                episode : {item.episode} - name : {item.name}
+                <Link href={`/episode/${item.id}`}>
+                  episode : {item.episode} - name : {item.name}
+                </Link>
               </p>
             </div>
           );
