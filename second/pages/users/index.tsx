@@ -24,7 +24,7 @@ const UserIndex = ({ userList }: UserIndexProps) => {
             <div key={item.id} className="flex gap-2 items-center">
               <p>name : {item.name}</p>-<p>status : {item.status}</p>
               <span
-                className={`block w-3 h-3 rounded-full ${
+                className={`block w-3 h-3 rounded-full ${   
                   item.status === "Alive" ? "bg-green-500" : "bg-red-500"
                 }`}
               ></span>
