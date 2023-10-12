@@ -25,4 +25,9 @@
 
 //! 3. what is revalidate in getStaticProps ?   //
 //&           1. it's just for build time!!and deploy in online-server
-//&           1. it will fetch data in [n] seconds but if a new request comes in
+//&           2. it will fetch data in [n] seconds but if a new request comes in
+
+//! 4. why SSR ?                                //
+//&           1. when we have dynamic data
+//&           2. when we have large number of pages
+//&           3. for shopping and big website

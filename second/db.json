@@ -15,5 +15,77 @@
       "title": "server",
       "price": "1300"
     }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "The art of Writing",
+      "description": "Exploring the craft and nuances of writing",
+      "date": "2023-10-12",
+      "category": "write"
+    },
+    {
+      "id": 2,
+      "title": "Traveling on a Budget",
+      "description": "Tips and tricks for affordable adventures",
+      "date": "2023-10-11",
+      "category": "travel"
+    },
+    {
+      "id": 3,
+      "title": "Healthy Eating Habits",
+      "description": "Improving your diet for a better lifestyle",
+      "date": "2023-10-10",
+      "category": "health"
+    },
+    {
+      "id": 4,
+      "title": "The Future of AI",
+      "description": "Exploring the latest trends in artificial intelligence",
+      "date": "2023-10-09",
+      "category": "technology"
+    },
+    {
+      "id": 5,
+      "title": "Fitness for Beginners",
+      "description": "Getting started with a fitness routine",
+      "date": "2023-10-08",
+      "category": "health"
+    },
+    {
+      "id": 6,
+      "title": "Environmental Sustainability",
+      "description": "Ways to protect our planet for future generations",
+      "date": "2023-10-07",
+      "category": "environment"
+    },
+    {
+      "id": 7,
+      "title": "art and Creativity",
+      "description": "Exploring the world of art and fostering creativity",
+      "date": "2023-10-06",
+      "category": "art"
+    },
+    {
+      "id": 8,
+      "title": "Cybersecurity in a Digital World",
+      "description": "Tips to stay safe online in the modern age",
+      "date": "2023-10-05",
+      "category": "technology"
+    },
+    {
+      "id": 9,
+      "title": "history Uncovered",
+      "description": "Delving into the mysteries of the past",
+      "date": "2023-10-04",
+      "category": "history"
+    },
+    {
+      "id": 10,
+      "title": "The Joys of Cooking",
+      "description": "Discovering culinary delights in your own kitchen",
+      "date": "2023-10-03",
+      "category": "food"
+    }
   ]
 }
