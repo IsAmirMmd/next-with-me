@@ -9,6 +9,7 @@ interface ItemStatus {
     title: string;
     price: string;
   };
+  id: number;
 }
 
 //? get episode from ssr in dynamic route
@@ -30,8 +31,8 @@ export default Product;
 
 //! we use getStaticPaths in [this].tsx format
 export async function getStaticPaths() {
-  const { data } = await axios.get(`https://rickandmortyapi.com/api/episode`);
-  const paths = data.results.slice(0, 5).map((item: ItemStatus) => {
+  const { data } = await axios.get(`http://localhost:4000/products`);
+  const paths = data.map((item: ItemStatus) => {
     return {
       params: { id: `${item.id}` },
     };
@@ -55,5 +56,9 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     props: {
       product: data,
     },
+    //^ in this situation it will regenerate the data from api
+    //^ after coming any request ( update data in build time )
+    //* if we log anything in this functon it would take [n] sec to show in console
+    revalidate: 30,
   };
 }

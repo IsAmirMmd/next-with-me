@@ -36,9 +36,17 @@ export default ProductIndex;
 
 export async function getStaticProps() {
   const { data } = await axios.get("http://localhost:4000/products");
+
+  console.log("genereate from /producs");
+
   return {
     props: {
       itemList: data,
     },
+
+    //^ in this situation it will regenerate the data from api
+    //^ after coming any request ( update data in build time )
+
+    revalidate: 30,
   };
 }

@@ -22,3 +22,7 @@
 //&            1. it won't show any loading from router but in-browser,yes!
 //&            2. it will show the right return after loading completed
 //&            3. when => we wanna pass the all the tests from google bots(SEO)
+
+//! 3. what is revalidate in getStaticProps ?   //
+//&           1. it's just for build time!!and deploy in online-server
+//&           1. it will fetch data in [n] seconds but if a new request comes in
