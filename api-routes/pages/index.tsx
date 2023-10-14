@@ -29,6 +29,15 @@ export default function Home() {
 
   if (loading) return <p>loading...</p>;
 
+  const deleteHandler = (id: number) => {
+    axios
+      .delete(`api/todos/${id}`)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center p-24 ${inter.className}`}
@@ -50,7 +59,7 @@ export default function Home() {
                 <button>
                   <CheckIcon className="w-6 h-6 stroke-green-300" />
                 </button>
-                <button>
+                <button onClick={() => deleteHandler(item.id)}>
                   <TrashIcon className="w-6 h-6 stroke-red-300" />
                 </button>
                 <button>
