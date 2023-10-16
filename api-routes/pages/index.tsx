@@ -1,12 +1,13 @@
 import { Inter } from "next/font/google";
 import axios from "axios";
-import { CheckIcon, TrashIcon, PencilIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
+import TodoList from "@/components/TodoList";
+import TodoForm from "@/components/TodoFrom";
 
 const inter = Inter({ subsets: ["latin"] });
 
-interface TodoList {
-  todos: Todo[];
+interface TodoListProps {
+  todos: Todo[] | undefined;
 }
 interface Todo {
   title: string;
@@ -14,8 +15,8 @@ interface Todo {
 }
 
 export default function Home() {
-  const [data, setData] = useState<TodoList | null>(null);
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<TodoListProps | null>(null);
 
   useEffect(() => {
     axios
@@ -28,6 +29,16 @@ export default function Home() {
   }, []);
 
   if (loading) return <p>loading...</p>;
+
+  const submitHandler = (event: React.FormEvent, todo: string | undefined) => {
+    event.preventDefault();
+    if (!todo) return;
+    try {
+      axios.post("/api/todos", { todo }).then((res) => setData(res.data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const deleteHandler = (id: number) => {
     axios
@@ -43,33 +54,8 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center p-24 ${inter.className}`}
     >
       <p>main page of api and route</p>
-      <h1>List Of Todos : </h1>
-
-      <section className="lg:w-1/2 w-full mx-auto flex flex-col gap-3 mt-4">
-        {data?.todos.map((item: Todo) => {
-          return (
-            <div
-              className="flex justify-between w-full rounded-md bg-slate-900 px-5 py-3"
-              key={item.id}
-            >
-              <p>
-                {item.id} - {item.title}
-              </p>
-              <div className="flex gap-2">
-                <button>
-                  <CheckIcon className="w-6 h-6 stroke-green-300" />
-                </button>
-                <button onClick={() => deleteHandler(item.id)}>
-                  <TrashIcon className="w-6 h-6 stroke-red-300" />
-                </button>
-                <button>
-                  <PencilIcon className="w-6 h-6 stroke-blue-300" />
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </section>
+      <TodoForm submitHandler={submitHandler} />
+      <TodoList deleteHandler={deleteHandler} todos={data?.todos} />
     </main>
   );
 }

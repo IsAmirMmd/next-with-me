@@ -1,3 +1,4 @@
+import { todos } from "@/data/todos";
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -20,18 +21,10 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   const { id } = req.query;
-  axios
-    .get("http://localhost:3000/api/todos")
-    .then((response) => {
-      if (req.method === "DELETE") {
-        const index = response.data.todos.findIndex(
-          (item: Todo) => item.id === Number(id)
-        );
-        response.data.todos.splice(index, 1);
-        return res
-          .status(200)
-          .json({ message: "todo deleted !", todos: response.data.todos });
-      }
-    })
-    .catch((err) => console.log(err));
+  axios;
+  if (req.method === "DELETE") {
+    const index = todos.findIndex((item: Todo) => item.id === Number(id));
+    todos.splice(index, 1);
+    return res.status(200).json({ message: "todo deleted !", todos });
+  }
 }
