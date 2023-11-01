@@ -1,9 +1,20 @@
 import Image from "next/image";
 import staticImage from "../public/images/1.jpg";
+import Head from "next/head";
+import { GetServerSidePropsContext } from "next";
 
-export default function Home() {
+type Props = {
+  title: string;
+  desc: string;
+};
+
+export default function Home({ title, desc }: Props) {
   return (
     <div>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={desc} />
+      </Head>
       <p>this is picture box</p>
       <Image
         //! it will blur the main photo in static src
@@ -58,4 +69,14 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+//? we would set meta and title using this code ->
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  return {
+    props: {
+      title: "it can be anything",
+      desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam, fugiat.",
+    },
+  };
 }
